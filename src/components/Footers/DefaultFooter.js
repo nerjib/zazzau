@@ -34,7 +34,7 @@ function DefaultFooter() {
           <div className="copyright" id="copyright">
             © {new Date().getFullYear()}, Designed by{" "}
             <a
-              href="#"
+              href="https://github.com/nerjib"
               target="_blank"
             >
               Entech

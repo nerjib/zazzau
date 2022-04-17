@@ -12,7 +12,7 @@ function TransparentFooter() {
           <ul>
             <li>
               <a
-                href="/"
+                href="https://github.com/nerjib"
                 target="_blank"
               >
                 Zazzau Properties

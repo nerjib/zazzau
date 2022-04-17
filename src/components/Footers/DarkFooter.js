@@ -20,7 +20,7 @@ function DarkFooter() {
             </li>
             <li>
               <a
-                href="#"
+                href="http://github.com/nerjib"
                 target="_blank"
               >
                 About Us
