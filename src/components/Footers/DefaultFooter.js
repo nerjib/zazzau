@@ -37,7 +37,7 @@ function DefaultFooter() {
               href="https://github.com/nerjib"
               target="_blank"
             >
-              Entech
+              nAjib
             </a>
          .
           </div>

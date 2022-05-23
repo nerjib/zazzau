@@ -18,10 +18,11 @@ import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import Navbar from "components/Navbars/Navbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 import LandingPageHeader from "components/Headers/LandingPageHeader";
 import CustomerPageHeader from "components/Headers/CustomerPageHeader";
+import ProfilePageHeader from "components/Headers/ProfilePageHeader";
 
 function Customers() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -42,7 +43,7 @@ useEffect(() => {
 let tbData=[];
 if (customers.length>0){
   Object.keys(customers).map((i,j) => {
-    tbData.push(<tr key={j}><td>{j+1}</td><td >{`${customers[i].name} ${customers[i].lastname} ${customers[i].firstnam}`}</td>
+    tbData.push(<tr key={j}><td>{j+1}</td><td ><a href={`/customer/${customers[i].id}`}>{`${customers[i].name} ${customers[i].lastname} ${customers[i].firstnam}`}</a></td>
     <td>{customers[i].email}</td><td>{customers[i].phone}</td></tr>
     )
 }
@@ -51,11 +52,11 @@ if (customers.length>0){
 
   return (
     <>
-      <div className="page-header " >
-      <ExamplesNavbar />
+      <Navbar />
+      <div className="wrapper">
+        <LandingPageHeader />    
         <div className="content">
         
-          <Container  >
           <Button 
               className="btn-round btn-white"
               color="default"
@@ -74,9 +75,13 @@ if (customers.length>0){
                     <tbody>
                       {tbData}
                       {tbData}
+                      {tbData}
+                      {tbData}
+                      {tbData}
+
                     </tbody>
                     </table>
-          </Container>
+          
         </div>
         <TransparentFooter />
       </div>

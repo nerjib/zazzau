@@ -35,7 +35,7 @@ function DarkFooter() {
             href="/"
             target="_blank"
           >
-            Entech
+            Najib
           </a>
           . 
         </div>

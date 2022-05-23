@@ -1,7 +1,8 @@
 import LandingPageHeader from "components/Headers/LandingPageHeader";
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar";
+import Navbar from "components/Navbars/Navbar.js";
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // reactstrap components
 import {
   Button,
@@ -27,10 +28,9 @@ function AddCustomer() {
   const [emailFocus, setEmailFocus] = React.useState(false);
   return (
     <>
-        <ExamplesNavbar/>
         <Container>
           <Row>
-            <Card className="section" data-background-color="black">
+            <Card className="section" >
               <Form action="" className="form" method="">
                 <CardHeader className="text-center">
                   <CardTitle className="title-up" tag="h3">
@@ -131,7 +131,7 @@ function AddCustomer() {
                 </CardBody>
                 <CardFooter className="text-center">
                   <Button
-                    className="btn-neutral btn-round"
+                    className="btn-success btn-light btn-round"
                     color="default"
                     href="#pablo"
                     onClick={(e) => e.preventDefault()}

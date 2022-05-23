@@ -19,7 +19,7 @@ import { connect } from "react-redux";
 
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import Navbar from "components/Navbars/Navbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 import MilleniumCity from "./milleniniumcity";
 import Kakuri from "./kakuri";
@@ -47,7 +47,7 @@ function ConnectedSites({ site }) {
 
   return (
     <>
-      <ExamplesNavbar />
+      <Navbar />
       <div className="page-header clear-filter" >
         <div className="container">
         {site=="Millenium City"?<MilleniumCity />:<Kakuri/>}

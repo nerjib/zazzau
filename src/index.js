@@ -1,20 +1,4 @@
-/*
 
-=========================================================
-* Now UI Kit React - v1.5.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-kit-react
-* Copyright 2021 Creative Tim (http://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit-react/blob/main/LICENSE.md)
-
-* Designed by www.invisionapp.com Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -28,11 +12,11 @@ import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
 // pages for this kit
 import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
-import LoginPage from "views/examples/LoginPage.js";
-import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
+import LoginPage from "views/profile/LoginPage.js";
+import LandingPage from "views/profile/LandingPage.js";
+import ProfilePage from "views/profile/ProfilePage.js";
 import Sites from "views/sites";
-import store from "./components/store";
+import store from "../src/Redux/store";
 import Customers from "views/customers";
 import AddCustomer from "views/customers/addcustomers";
 
@@ -42,10 +26,6 @@ ReactDOM.render(
     <Switch>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
-        <Route
-          path="/nucleo-icons"
-          render={(props) => <NucleoIcons {...props} />}
-        />
         <Route
           path="/home"
           render={(props) => <LandingPage {...props} />}
