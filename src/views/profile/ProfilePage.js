@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import axios from "axios";
 //import Table from "@material-ui/core/Table";
-
+import { connect } from "react-redux";
 // core components
 import Navbar from "components/Navbars/Navbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
@@ -23,7 +23,14 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 import MilleniumCity from "views/sites/milleniniumcity";
 import LayoutMap from "views/sites/milleniniumcity";
 
-function ProfilePage() {
+
+const mapStateToProps = (state) => {
+  return {
+    role: state.role,
+  };
+};
+
+function ConnectedProfilePage({role}) {
   const [pills, setPills] = React.useState("2");
   const [userId, setUserId] = useState('')
   let [details, setDetails] = useState([])
@@ -35,7 +42,9 @@ function ProfilePage() {
    
    useEffect(()=>{
    
-    axios.get('https://zazzau.herokuapp.com/api/v1/customers/details/'+localStorage.getItem('id'))
+
+
+    axios.get('/api/v1/customers/details/'+localStorage.getItem('id'))
     .then((res) =>{
 
      //  setDetails(res.data)
@@ -45,7 +54,7 @@ function ProfilePage() {
          console.log(error)
     })    
 
-    axios.get('https://zazzau.herokuapp.com/api/v1/customers/layouts/'+localStorage.getItem('id'))
+    axios.get('/api/v1/customers/layouts/'+localStorage.getItem('id'))
     .then((res) =>{
 
        setDetails(res.data)
@@ -106,7 +115,9 @@ function ProfilePage() {
       <Navbar />
       <div className="wrapper">
         <ProfilePageHeader noOfPlot={details.length} userData={userData}/>
+
         <div className="section">
+          {role}
           <Container>
             <h3 className="title">Payment Status</h3>
             <table className="table">
@@ -146,4 +157,5 @@ function ProfilePage() {
   );
 }
 
+const ProfilePage = connect(mapStateToProps)(ConnectedProfilePage);
 export default ProfilePage;

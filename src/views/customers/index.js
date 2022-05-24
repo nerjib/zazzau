@@ -34,7 +34,7 @@ const [redirect, setRedirect] = useState(false)
 const [login, setLogin] = useState('fail')
 
 useEffect(() => {
-  axios.get('https://zazzau.herokuapp.com/api/v1/customers')
+  axios.get('/api/v1/customers')
   .then(res => {
     setCustomers(res.data)
   }).catch(err => {console.log(err)})
@@ -43,7 +43,7 @@ useEffect(() => {
 let tbData=[];
 if (customers.length>0){
   Object.keys(customers).map((i,j) => {
-    tbData.push(<tr key={j}><td>{j+1}</td><td ><a href={`/customer/${customers[i].id}`}>{`${customers[i].name} ${customers[i].lastname} ${customers[i].firstnam}`}</a></td>
+    tbData.push(<tr key={j}><td>{j+1}</td><td ><a href={`/#/customers/${customers[i].id}`}>{`${customers[i].name} ${customers[i].lastname} ${customers[i].firstnam}`}</a></td>
     <td>{customers[i].email}</td><td>{customers[i].phone}</td></tr>
     )
 }

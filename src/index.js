@@ -1,7 +1,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, HashRouter, Router } from "react-router-dom";
 import { Provider } from "react-redux";
 
 // styles for this kit
@@ -19,42 +19,24 @@ import Sites from "views/sites";
 import store from "../src/Redux/store";
 import Customers from "views/customers";
 import AddCustomer from "views/customers/addcustomers";
+import Properties from "views/properties";
+import CustomerProfile from "views/customers/customerProfile";
 
 ReactDOM.render(
   <Provider store={store}>
-  <BrowserRouter>
-    <Switch>
+  <HashRouter>
       <Switch>
-        <Route path="/index" render={(props) => <Index {...props} />} />
-        <Route
-          path="/home"
-          render={(props) => <LandingPage {...props} />}
-        />
-        <Route
-          path="/profile-page"
-          render={(props) => <ProfilePage {...props} />}
-        />
-          <Route
-          path="/sites"
-          render={(props) => <Sites {...props} />}
-        />
+      <Route path="/home" exact component={LandingPage} />
+      <Route path="/propertiess" exact component={Properties} />
+      <Route path="/profile-page" exact component={ProfilePage} />
+      <Route path="/sites" exact component={Sites} />
+      <Route path="/customers" exact component={Customers} />
+      <Route path="/customers/:id" exact component={CustomerProfile} />
+      <Route path="/login-page" exact component={LoginPage} />
+      <Route path="/add-customer" exact component={AddCustomer} />
+
         
-        <Route
-          path="/login-page"
-          render={(props) => <LoginPage {...props} />}
-        />
-         <Route
-          path="/customers"
-          render={(props) => <Customers {...props} />}
-        />
-         <Route
-          path="/add-customer"
-          render={(props) => <AddCustomer {...props} />}
-        />
-        <Redirect to="/home" />
-        <Redirect from="/" to="/home" />
       </Switch>
-    </Switch>
-  </BrowserRouter></Provider>,
+  </HashRouter></Provider>,
   document.getElementById("root")
 );

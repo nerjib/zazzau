@@ -182,11 +182,17 @@ const handleSite=(event)=> {
                   Home
                 </NavLink>
               </NavItem>
-            {login &&  <NavItem>
+              <NavItem>
+                <NavLink to="/propertiess" tag={Link}>
+                  Properties
+                </NavLink>
+              </NavItem>
+            
+            {/*login &&  <NavItem>
                 <NavLink to="/profile-page" tag={Link}>
                   Profile
                 </NavLink>
-              </NavItem>}
+              </NavItem>*/}
               {acctType == 'admin'&& <NavItem>
                 <NavLink to="/customers" tag={Link}>
                   Customers
@@ -208,7 +214,7 @@ const handleSite=(event)=> {
                 </NavLink>
               </NavItem>}
            {login?  <NavItem >
-                <NavLink to="/home"  tag={Link} onClick={logout}>
+                <NavLink to="/login-page"  tag={Link} onClick={logout}>
                   Logout
                 </NavLink>
               </NavItem> :  <NavItem>

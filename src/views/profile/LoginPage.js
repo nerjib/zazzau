@@ -17,12 +17,28 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 import { Link, Route, Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
 
 // core components
 import Navbar from "components/Navbars/Navbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
+import {changeRole} from "../../Redux/actions";
+import { CHANGE_ROLE } from "Redux/constants";
 
-function LoginPage() {
+const mapStateToProps = state => {
+  return {  role: state.role };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+      changeRole1: style=> dispatch(changeRole(style)) ,
+   
+  };
+}
+
+
+
+function ConnectedLoginPage({changeRole1}) {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   const [email, setEmail] = React.useState('');
@@ -46,6 +62,7 @@ const [login, setLogin] = useState('fail')
 
   useEffect(async()=>{
     const access = await ( localStorage.getItem('login'))
+    const userRole = await ( localStorage.getItem('acttype'))
   //  alert(access)
     if(access=='pass'){
         setRedirect(true)
@@ -63,10 +80,11 @@ const [login, setLogin] = useState('fail')
       email
     }
     
-    axios.post('https://zazzau.herokuapp.com/api/v1/auth/signin',data)
+    axios.post('/api/v1/auth/signin',data)
     .then(async res => {
       if (res.data['status'] === 'success') {
   await    localStorage.setItem('acttype', res.data['data'].role);
+  changeRole1(res.data['data'].role);
    //   localStorage.setItem('token', 'res.data.token');  
    await localStorage.setItem('id', res.data['data'].userId)   
   await localStorage.setItem('login', 'pass');
@@ -208,5 +226,7 @@ const [login, setLogin] = useState('fail')
     </>
   );
 }
+
+const LoginPage = connect( mapStateToProps,mapDispatchToProps)(ConnectedLoginPage);
 
 export default LoginPage;
