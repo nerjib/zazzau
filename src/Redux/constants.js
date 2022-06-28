@@ -1,3 +1,0 @@
-export const CHANGE_ROLE = "CHANGE_ROLE";
-export const CHANGE_SITE = "CHANGE_SITE";
-export const CHANGE_PROPERTIES = "CHANGE_PROPERTIES";
